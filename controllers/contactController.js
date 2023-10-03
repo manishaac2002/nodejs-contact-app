@@ -4,6 +4,11 @@ const getContacts = (request, response) => {
 
 const createContacts = (request, response) => {
     console.log("This is request body :",request.body);
+    const {name,email,phone}=request.body
+    if(!name || !email || !phone){
+        response.status(400)
+        throw new Error ("All fields are mandatory")
+    }
     response.status(200).json({ message: " Create Contacts" })
 }
 
